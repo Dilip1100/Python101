@@ -1,0 +1,6 @@
+import numpy
+print("Enter the Count")
+a = int(input())
+m = list(map(int, input("Enter the numbers : ").strip().split(',')))[:a]
+print("The Mean is", numpy.mean(m))
+print("The Median is", numpy.std(m))
