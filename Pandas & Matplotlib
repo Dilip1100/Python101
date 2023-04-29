@@ -1,0 +1,17 @@
+import pandas as pd
+import numpy as np 
+import matplotlib.pyplot as plt
+# Your dataset here 
+df = pd.read_csv('C:/Users/dilip/Downloads/HPCARS.csv')
+print(df)
+HP = df['hp'].head(5)
+CAR = df['model'].head(5)
+fig = plt.figure(figsize =(10, 7))
+ 
+# Horizontal Bar Plot
+plt.bar(CAR[0:4], HP[0:4])
+ 
+# Show Plot
+plt.show()
+
+plt.scatter(CAR, HP)
