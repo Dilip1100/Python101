@@ -1,0 +1,8 @@
+n = int(input())
+M = list(map(int, input().split()))
+scores = list(set(M))  
+scores.sort() 
+print(scores[-2])
+-------------------------------------------------
+
+Finding Second Highest Value from a List "M"
