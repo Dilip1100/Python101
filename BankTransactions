@@ -1,0 +1,44 @@
+class Acc:
+    def __init__(self, bankname, owner, balance=0):
+        self.bankname = bankname
+        self.owner = owner
+        self.balance = balance
+
+    def __str__(self):
+        """Provides a string representation of the account."""
+        return f"Bank Name: {self.bankname}, Account owner: {self.owner}, Account balance: ${self.balance}"
+
+    def deposit(self, dep_amt):
+        self.balance += dep_amt
+        print('Deposit Accepted & The Curr Balance is :', self.balance)
+
+    def withdraw(self, wd_amt):
+        if self.balance >= wd_amt:
+            self.balance -= wd_amt
+            print('Withdrawal Accepted & The Curr Balance is:', self.balance )
+        else:
+            print('Funds Unavailable! As The Curr Balance is', self.balance)
+
+acc_a = Acc("HSBC", "Dilip", 400)
+
+
+print('Account A Details are :', acc_a)
+
+print("Select an option : ")
+
+print("Deposit")
+print("Withdraw")
+print("Exit")
+
+H = str(input())
+
+if H == "Deposit":
+  dep_amt = int(input("Enter the amount to be deposited: "))
+  acc_a.deposit(dep_amt)
+elif H == "Withdraw":
+    wd_amt = int(input("Enter the amount to be withdrawn: "))
+    acc_a.withdraw(wd_amt) 
+elif H == "Exit":
+  print("Good Bye!")
+else:
+  print("Invalid Input")
