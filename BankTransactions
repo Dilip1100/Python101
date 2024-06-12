@@ -17,7 +17,7 @@ class Acc:
             self.balance -= wd_amt
             print('Withdrawal Accepted & The Curr Balance is:', self.balance )
         else:
-            print('Funds Unavailable! As The Curr Balance is', self.balance)
+            print('Funds Unavailable! As The Curr Balance is Only', self.balance)
 
 acc_a = Acc("HSBC", "Dilip", 400)
 
