@@ -1,0 +1,57 @@
+import requests
+import bs4
+
+# Base URL for pagination
+burl = 'https://books.toscrape.com/catalogue/page-{}.html'
+
+# Initialize empty lists for each star rating
+one_star_books = []
+two_star_books = []
+three_star_books = []
+four_star_books = []
+five_star_books = []
+
+# Loop through pages 1 to 50
+for n in range(1, 51):
+    scrape_url = burl.format(n)
+    res = requests.get(scrape_url)
+    soup = bs4.BeautifulSoup(res.text, "lxml")
+
+    # Find all book elements
+    books = soup.select(".product_pod")
+
+    for book in books:
+        # Extract title
+        title = book.select('a')[1]['title']
+        
+        # Extract price
+        price = book.select('.price_color')[0].text
+
+        # Check for each star rating class and append title and price accordingly
+        if len(book.select('.star-rating.One')) != 0:
+            one_star_books.append((title, price))
+        elif len(book.select('.star-rating.Two')) != 0:
+            two_star_books.append((title, price))
+        elif len(book.select('.star-rating.Three')) != 0:
+            three_star_books.append((title, price))
+        elif len(book.select('.star-rating.Four')) != 0:
+            four_star_books.append((title, price))
+        else:
+            five_star_books.append((title, price))
+
+# Print titles and prices for each star rating
+print("One Star Titles and Prices:")
+print(one_star_books)
+
+print("\nTwo Star Titles and Prices:")
+print(two_star_books)
+
+print("\nThree Star Titles and Prices:")
+print(three_star_books)
+
+print("\nFour Star Titles and Prices:")
+print(four_star_books)
+
+print("\nFive Star Titles and Prices:")
+print(five_star_books)
+
